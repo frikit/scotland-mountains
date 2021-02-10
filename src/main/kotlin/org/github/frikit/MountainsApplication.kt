@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class MountainsApplication
 
 fun main(args: Array<String>) {
-	runApplication<MountainsApplication>(*args)
+    runApplication<MountainsApplication>(*args)
 }
