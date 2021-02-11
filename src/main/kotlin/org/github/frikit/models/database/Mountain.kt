@@ -1,4 +1,4 @@
-package org.github.frikit.models
+package org.github.frikit.models.database
 
 data class Mountain(
     val number: Long,
@@ -10,6 +10,6 @@ data class Mountain(
     val mapScale: MapScale,
     val gridRef: GridRef,
     val coordinate: Coordinate,
-    val post: Post,
+    val hillCategory: HillCategory,
     val comments: String
 )

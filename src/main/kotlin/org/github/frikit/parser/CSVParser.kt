@@ -1,6 +1,6 @@
 package org.github.frikit.parser
 
-import org.github.frikit.models.*
+import org.github.frikit.models.database.*
 import org.slf4j.LoggerFactory
 
 class CSVParser : Parser {
@@ -83,7 +83,7 @@ class CSVParser : Parser {
         val _1990 = MountainTopType.parse(line.get(25))
         val _1997 = MountainTopType.parse(line.get(26))
         val post1997 = MountainTopType.parse(line.get(27))
-        val post = Post(
+        val post = HillCategory(
             _1891 = _1891,
             _1921 = _1921,
             _1933 = _1933,
@@ -109,7 +109,7 @@ class CSVParser : Parser {
             mapScale = scale,
             gridRef = grid,
             coordinate = coord,
-            post = post,
+            hillCategory = post,
             comments = comments
         )
     }

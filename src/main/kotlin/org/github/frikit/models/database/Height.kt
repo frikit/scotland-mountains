@@ -1,4 +1,4 @@
-package org.github.frikit.models
+package org.github.frikit.models.database
 
 data class Height(
     val metres: Double,

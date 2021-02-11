@@ -1,6 +1,6 @@
-package org.github.frikit.models
+package org.github.frikit.models.database
 
-data class Post(
+data class HillCategory(
     val _1891: MountainTopType,
     val _1921: MountainTopType,
     val _1933: MountainTopType,

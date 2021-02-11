@@ -1,8 +1,8 @@
 package org.github.frikit.parser
 
 import org.github.frikit.BaseTestClass
-import org.github.frikit.models.*
-import org.github.frikit.models.MountainTopType.MUN
+import org.github.frikit.models.database.*
+import org.github.frikit.models.database.MountainTopType.MUN
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -120,7 +120,7 @@ internal class CSVParserTest : BaseTestClass() {
             ),
             gridRef = GridRef(ref = "NN773308", refXY = "NN7732430857"),
             coordinate = Coordinate(x = 277324, y = 730857),
-            post = Post(
+            hillCategory = HillCategory(
                 _1891 = MUN,
                 _1921 = MUN,
                 _1933 = MUN,

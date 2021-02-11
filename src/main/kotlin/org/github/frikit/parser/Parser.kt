@@ -1,6 +1,6 @@
 package org.github.frikit.parser
 
-import org.github.frikit.models.Mountain
+import org.github.frikit.models.database.Mountain
 
 interface Parser {
 

@@ -1,7 +1,7 @@
 package org.github.frikit.services
 
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
-import org.github.frikit.models.*
+import org.github.frikit.models.database.Mountain
 import org.github.frikit.parser.Parser
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
