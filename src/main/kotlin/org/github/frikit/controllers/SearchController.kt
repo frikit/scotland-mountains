@@ -6,6 +6,8 @@ import org.github.frikit.models.database.MountainTopType
 import org.github.frikit.models.response.MountainShortInfo
 import org.github.frikit.services.DataBaseService
 import org.github.frikit.services.FilterService
+import org.github.frikit.services.FilterService.Companion.filterDataByHillHeight
+import org.github.frikit.services.FilterService.Companion.filterDataByHillType
 import org.github.frikit.services.SortService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +19,6 @@ import java.util.concurrent.atomic.AtomicInteger
 @RestController
 class SearchController(
     @Autowired private val dataBaseService: DataBaseService,
-    @Autowired private val filterService: FilterService,
     @Autowired private val sortService: SortService
 ) {
 
@@ -27,6 +28,8 @@ class SearchController(
     fun searchByHill(
         @RequestParam("type", required = false, defaultValue = "") type: String?,
         @RequestParam("limit", required = false, defaultValue = Integer.MAX_VALUE.toString()) limit: Int,
+        @RequestParam("minHeight", required = false, defaultValue = "0") minHeight: Double,
+        @RequestParam("maxHeight", required = false, defaultValue = Double.MAX_VALUE.toString()) maxHeight: Double,
         @RequestParam params: Map<String, String>
     ): List<MountainShortInfo> {
         //filter
@@ -36,8 +39,9 @@ class SearchController(
             else -> MountainTopType.EITHER
         }
 
-        val filteredData = filterService
-            .filterDataByHillType(dataBaseService.findAll(), filterBy)
+        val filteredData = dataBaseService.findAll()
+            .filterDataByHillType(filterBy)
+            .filterDataByHillHeight(minHeight, maxHeight)
 
         //sort
         //find all sort
@@ -54,7 +58,7 @@ class SearchController(
             } else if (value != null && valueSort == null) {
                 sortFilters.add(Pair(value, Sort.NONE))
             } else if (value != null && valueSort != null) {
-                val sort = when(valueSort.trim().toUpperCase()) {
+                val sort = when (valueSort.trim().toUpperCase()) {
                     "ASC" -> Sort.ASC
                     "DESC" -> Sort.DESC
                     else -> Sort.NONE
